@@ -1,36 +1,47 @@
 import { useState } from "react";
 import Input from "../components/input/input.component";
-import ToggleButton from "../components/toggle-button/toggle-button.component";
+import Toggle from "../components/toggle/toggle.component";
 import { ThemeProvider } from "styled-components";
 import { light, dark, purple, GlobalStyle } from "../themes";
 import { AppContainer } from "./App.styles.jsx";
 import "./App.styles.jsx";
 import Keys from "../components/keys/keys.component";
 
+const CHECKBOX_STATES = {
+  dark: 1,
+  light: 2,
+  purple: 3,
+};
+
 const App = () => {
   const [theme, setTheme] = useState(dark);
-  const [value, setValue] = useState("");
+  const [checked, setChecked] = useState(CHECKBOX_STATES.dark);
 
-  const handleThemeChange = (theme) => {
-    setTheme(theme);
+  const handleThemeChange = () => {
+    let updatedChecked;
+
+    if (checked === CHECKBOX_STATES.dark) {
+      updatedChecked = CHECKBOX_STATES.light;
+      setTheme(light);
+    } else if (checked === CHECKBOX_STATES.light) {
+      updatedChecked = CHECKBOX_STATES.purple;
+      setTheme(purple);
+    } else if( checked === CHECKBOX_STATES.purple) {
+      updatedChecked = CHECKBOX_STATES.dark;
+      setTheme(dark);
+    }
+
+    setChecked(updatedChecked);
   };
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppContainer>
         <div className="calculator">
-          <div className="toggle">
-            <ToggleButton children={"Light Theme"} onClick={() => handleThemeChange(light)} />
-            <ToggleButton children={"Dark Theme"} onClick={() => handleThemeChange(dark)} />
-            <ToggleButton children={"Purple Theme"} onClick={() => handleThemeChange(purple)} />
-          </div>
-          <Input onChange={handleChange} value={value} />
-          <Keys/>
+          <Toggle value={checked} onChange={handleThemeChange}/>
+          <Input/>
         </div>
       </AppContainer>
     </ThemeProvider>
