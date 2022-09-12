@@ -1,4 +1,5 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import { ToggleContainer } from "./toggle.styles.jsx";
 import "./toggle.styles.jsx";
 
 const CHECKBOX_STATES = {
@@ -9,6 +10,8 @@ const CHECKBOX_STATES = {
 
 const Toggle = ({ value, onChange }) => {
   const checkRef = useRef();
+  const [theme, setTheme] = useState(2);
+  const [position, setPosition] = useState("10%");
 
   useEffect(() => {
     if (value === CHECKBOX_STATES.dark) {
@@ -22,10 +25,37 @@ const Toggle = ({ value, onChange }) => {
     }
   }, [value]);
 
+  const handleClick = (e) => {
+    if (theme === 1) {
+      setPosition("10%");
+      setTheme(2);
+    } else if (theme === 2){
+      setPosition("35%");
+      setTheme(3);
+    } else if (theme === 3) {
+      setPosition("64%");
+      setTheme(1);
+    }
+  }
+
   return (
-    <div id="theme-switcher">
-      <input type="checkbox" ref={checkRef} checked={value === CHECKBOX_STATES.dark} onChange={onChange} />
-    </div>
+    <ToggleContainer left={position}>
+      <span className="theme">THEME</span>
+      <div className="numbers">
+        <span className="number">1</span>
+        <span className="number">2</span>
+        <span className="number">3</span>
+      </div>
+      <label>
+        <input
+          type="checkbox" 
+          ref={checkRef}
+          checked={value === CHECKBOX_STATES.dark} 
+          onChange={onChange} 
+          onClick={handleClick} />
+        <span></span>      
+      </label>     
+    </ToggleContainer>
   );
 };
 

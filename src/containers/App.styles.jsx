@@ -7,11 +7,17 @@ export const AppContainer = styled.div`
   display: flex;
   align-items: center;  
   justify-content: center;
+  font-family: 'League Spartan', sans-serif;
+  font-weigth: 700;
 
   .calculator {
     display: flex;
     flex-direction: column;
-    width: 500px;   
+    width: 400px;   
     place-items: center;
     height: auto;
+
+  /*   @media (min-width: 375px) {
+      width: 300px;
+    } */
 `;

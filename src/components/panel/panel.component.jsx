@@ -1,14 +1,13 @@
-import { KeysContainer } from "./keys.styles";
+import { KeysContainer } from "./panel.styles";
 import Key from "../key/key.component";
 
-const Keys = () => {
+const Panel = () => {
   return (
     <KeysContainer>
-      <div className="container">
         <Key children="7" />
         <Key children="8" />
         <Key children="9" />
-        <Key children="DEL" />
+        <Key size={true} children="DEL" />
         <Key children="4" />
         <Key children="5" />
         <Key children="6" />
@@ -21,11 +20,10 @@ const Keys = () => {
         <Key children="0" />
         <Key children="/" />
         <Key children="x" />
-        <Key children="RESET" />
-        <Key children="=" />
-      </div>
+        <Key width size children="RESET" />
+        <Key width children="=" />
     </KeysContainer>
   );
 };
 
-export default Keys;
+export default Panel;

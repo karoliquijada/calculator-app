@@ -29,8 +29,8 @@ export const dark = {
     dot_shadow: "hsl(6, 70%, 34%)",
     reset_bg: "hsl(30, 25%, 89%)",
     reset_shadow: "hsl(28, 16%, 65%)",
-    text1: "hsl(221, 14%, 31%)",
-    text2: "hsl(0, 0, 100%)",
+    text1: "hsl(0, 0, 100%)", 
+    text2: "hsl(221, 14%, 31%)",
   },
 };
 

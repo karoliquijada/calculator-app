@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Input from "../components/input/input.component";
-import Toggle from "../components/toggle/toggle.component";
+import Header from "../components/header/header.component";
+import Panel from "../components/panel/panel.component";
 import { ThemeProvider } from "styled-components";
 import { light, dark, purple, GlobalStyle } from "../themes";
 import { AppContainer } from "./App.styles.jsx";
 import "./App.styles.jsx";
-import Keys from "../components/keys/keys.component";
 
 const CHECKBOX_STATES = {
   dark: 1,
@@ -26,7 +26,7 @@ const App = () => {
     } else if (checked === CHECKBOX_STATES.light) {
       updatedChecked = CHECKBOX_STATES.purple;
       setTheme(purple);
-    } else if( checked === CHECKBOX_STATES.purple) {
+    } else if (checked === CHECKBOX_STATES.purple) {
       updatedChecked = CHECKBOX_STATES.dark;
       setTheme(dark);
     }
@@ -34,14 +34,14 @@ const App = () => {
     setChecked(updatedChecked);
   };
 
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppContainer>
         <div className="calculator">
-          <Toggle value={checked} onChange={handleThemeChange}/>
-          <Input/>
+          <Header value={checked} onChange={handleThemeChange} />
+          <Input />
+          <Panel/>
         </div>
       </AppContainer>
     </ThemeProvider>

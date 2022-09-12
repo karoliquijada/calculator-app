@@ -1,9 +1,12 @@
 import { KeyContainer } from "./key.styles";
 
-const Key = ({ children='1', onClick }) => {
+const Key = ({ children, width, bg }) => {
+  const onClick = (e) => {
+    console.log(e.target.value);
+  }
   return (
-    <KeyContainer>
-      <button type="button" onClick={onClick}>
+    <KeyContainer column={width} background={bg}>
+      <button type="button" value={children} onClick={onClick}>
         {children}
       </button>
     </KeyContainer>
